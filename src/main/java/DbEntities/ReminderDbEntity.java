@@ -35,7 +35,8 @@ public class ReminderDbEntity extends  DbEntity{
                             Integer.parseInt(item_row[1]),
                             Boolean.valueOf(item_row[2]),
                             Boolean.valueOf(item_row[3]),
-                            LocalDateTime.parse(item_row[4], DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"))
+                            LocalDateTime.parse(item_row[4], DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")),
+                            item_row[5]
                     );
 
                     reminders.add(row_reminder);
@@ -89,13 +90,15 @@ public class ReminderDbEntity extends  DbEntity{
 
                 reminder_sb.append(lineCount_users - 1);
                 reminder_sb.append(';');
-                reminder_sb.append("BookId");
+                reminder_sb.append(reminder.bookId);
                 reminder_sb.append(";");
-                reminder_sb.append("ReminderIsEnabled");
+                reminder_sb.append(reminder.reminderIsEnabled);
                 reminder_sb.append(";");
-                reminder_sb.append("NotificationIsSent");
+                reminder_sb.append(reminder.notificationIsSent);
                 reminder_sb.append(';');
-                reminder_sb.append("DateTime");
+                reminder_sb.append(reminder.datetime);
+                reminder_sb.append(';');
+                reminder_sb.append(reminder.reminderEmail);
 
                 Boolean reminder_registration_step = AddRow(reminder_sb);
             }
@@ -124,6 +127,8 @@ public class ReminderDbEntity extends  DbEntity{
             sb.append("NotificationIsSent");
             sb.append(';');
             sb.append("DateTime");
+            sb.append(';');
+            sb.append("ReminderEmail");
             sb.append('\n');
             //sb.append(<User Data>)
             writer.write(sb.toString());

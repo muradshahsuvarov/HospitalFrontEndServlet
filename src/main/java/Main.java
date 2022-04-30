@@ -10,11 +10,30 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-        GenerateTables();
-        //RegisterAccount(true);
+        //GenerateTables();
+        //RegisterAccount(false);
         //DeleteUser("surikshahsuvarov@gmail.com");
         //DeletePatient("surikshahsuvarov@gmail.com");
+        AuthenticateUser();
+    }
 
+    public static void AuthenticateUser() {
+
+        Authentication auth = new Authentication();
+        Account acc = new Account("muradshahsuvarov@gmail.com", "admin123");
+        acc = auth.authenticateAccount(acc);
+        System.out.println("ACCOUNT USERNAME: " + acc.user.getUsername());
+        if (acc.doctor != null && acc.patient == null) {
+            System.out.println("ACCOUNT DOCTOR SPEC: " + acc.doctor.specialization);
+            System.out.println("ACCOUNT DOCTOR ID: " + acc.doctor.doctorId);
+
+        }else if (acc.doctor == null && acc.patient != null) {
+
+            System.out.println("ACCOUNT PATIENT: " + acc.patient);
+            System.out.println("ACCOUNT PATIENT ID: " + acc.patient.patientId);
+            System.out.println("ACCOUNT PATIENT EMAIL: " + acc.patient.email);
+
+        }
     }
 
     public static void RegisterAccount(@NotNull Boolean _isDoctor) throws IOException {
@@ -22,15 +41,15 @@ public class Main {
         Registration _registration = new Registration();
 
         User user_1 = new User(
-                "Surkhay",
+                "Murad",
                 "Shahsuvarov",
-                "surkayshahsuvarov@gmail.com",
-                "surkayshahsuvarov@gmail.com",
+                "muradshahsuvarov@gmail.com",
+                "muradshahsuvarov@gmail.com",
                 "admin123",
-                "+994517773924",
+                "+994517773925",
                 23,
                 "Male",
-                true,
+                _isDoctor,
                 "Hello, I am a patient");
 
         if (_isDoctor) {
@@ -56,12 +75,9 @@ public class Main {
 
             Doctor doctor_1 = new Doctor("Cardiologist",
                     234534,
-                    hospital_1,
-                    service_1,
+                    0,
+                    0,
                     user_1);
-            Schedule schedule_1 = new Schedule(1);
-
-            doctor_1.schedule = schedule_1;
 
             service_1.email = doctor_1.getEmail();
 

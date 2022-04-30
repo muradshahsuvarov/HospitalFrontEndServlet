@@ -5,6 +5,10 @@ import java.util.List;
 
 public class Patient extends User {
 
+    public Integer patientId;
+
+    public String email;
+
     public Search search;
 
     public List<Payment> payments;

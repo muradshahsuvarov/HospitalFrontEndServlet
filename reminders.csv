@@ -1,1 +1,1 @@
-ReminderId;BookId;ReminderIsEnabled;NotificationIsSent;DateTime
+ReminderId;BookId;ReminderIsEnabled;NotificationIsSent;DateTime;ReminderEmail

@@ -74,11 +74,11 @@ public class Registration {
         _doctorAccount.append(";");
         _doctorAccount.append(_doctor.photo);
         _doctorAccount.append(";");
-        _doctorAccount.append(_doctor.hospital.hospitalId);
+        _doctorAccount.append(_doctor.hospitalId);
         _doctorAccount.append(";");
-        _doctorAccount.append(_doctor.service.serviceId);
+        _doctorAccount.append(_doctor.serviceId);
         _doctorAccount.append(";");
-        _doctorAccount.append(_doctor.schedule.scheduleId);
+        _doctorAccount.append(_doctor.scheduleId);
         _doctorAccount.append(";");
         _doctorAccount.append(_doctor.email);
 

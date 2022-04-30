@@ -16,8 +16,11 @@ public class User {
     protected String gender;
     protected boolean isDoctor;
     protected String personalInfo;
+
+    protected String reminderEmail;
+    protected String bookingEmail;
     protected List<Reminder> reminderList;
-    public List<Book> bookings;
+    protected List<Book> bookings;
 
     public User(String _name,
                 String _surname,
@@ -41,6 +44,7 @@ public class User {
         this.isDoctor = _isDoctor;
         this.personalInfo = _personalInfo;
         this.reminderList = new ArrayList<Reminder>();
+        this.bookings = new ArrayList<Book>();
 
     }
 
@@ -81,6 +85,10 @@ public class User {
 
     public String getPersonalInfo() { return this.personalInfo; }
 
+    public String getReminderEmail() { return this.reminderEmail; }
+
+    public String getBookingEmail() { return this.bookingEmail; }
+
     public List<Reminder> getReminderList() { return this.reminderList; }
 
     public void setName(String _name) { this.name = _name; }
@@ -102,6 +110,10 @@ public class User {
     public void setIsDoctor(boolean _isDoctor) { this.isDoctor = _isDoctor; }
 
     public void setPersonalInfo(String _personalInfo) { this.personalInfo = _personalInfo; }
+
+    public void setReminderEmail(String _reminderEmail) { this.reminderEmail = _reminderEmail; }
+
+    public void setBookingEmail(String _bookingEmail) { this.bookingEmail = _bookingEmail; }
 
     public void setReminderList(List<Reminder> _reminderList) { this.reminderList = _reminderList; }
 

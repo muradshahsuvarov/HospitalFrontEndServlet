@@ -5,15 +5,15 @@ public class Doctor extends User {
     public Integer doctorId;
     public String specialization;
     public Integer photo;
-    public Hospital hospital;
-    public Service service;
-    public Schedule schedule;
+    public Integer hospitalId;
+    public Integer serviceId;
+    public Integer scheduleId;
 
 
     public Doctor( String _specialization,
                    Integer _photo,
-                   Hospital _hospital,
-                   Service _service,
+                   Integer _hospitalId,
+                   Integer _serviceId,
                    User _user) {
 
         super (
@@ -31,12 +31,12 @@ public class Doctor extends User {
 
         this.specialization = _specialization;
         this.photo = _photo;
-        this.hospital = _hospital;
-        this.service = _service;
+        this.hospitalId = _hospitalId;
+        this.serviceId = _serviceId;
 
     }
 
-    public void viewAppointment(){ }
+    public void viewAppointments() { }
 
     public Integer getDoctorId() { return this.doctorId; }
 
@@ -44,22 +44,22 @@ public class Doctor extends User {
 
     public Integer getPhoto() { return this.photo; }
 
-    public Hospital getHospital() { return this.hospital; }
+    public Integer getHospitalId() { return this.hospitalId; }
 
-    public Service getService() { return this.service; }
+    public Integer getService() { return this.serviceId; }
 
-    public Schedule getSchedule() { return this.schedule; }
+    public Integer getSchedule() { return this.scheduleId; }
 
     public void setDoctorId(Integer _doctorId) { this.doctorId = _doctorId; }
 
     public void setSpecialization(String _specialization) { this.specialization = _specialization; }
 
-    public void setService(Service _service) { this.service = _service;}
+    public void setService(Integer _serviceId) { this.serviceId = _serviceId;}
 
     public void setPhoto(Integer _photo){ this.photo = _photo; }
 
-    public void setHospital(Hospital _hospital) {this.hospital = _hospital; }
+    public void setHospitalId(Integer _hospitalId) {this.hospitalId = _hospitalId; }
 
-    public void setSchedule(Schedule _schedule) { this.schedule = _schedule;}
+    public void setScheduleId(Integer _scheduleId) { this.scheduleId = _scheduleId;}
 
 }

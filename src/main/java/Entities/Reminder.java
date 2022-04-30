@@ -9,18 +9,20 @@ public class Reminder {
     public Boolean reminderIsEnabled;
     public Boolean notificationIsSent;
     public LocalDateTime datetime;
+    public String reminderEmail;
 
     public Reminder(Integer _reminderId,
-         Integer _bookId,
-         Boolean _reminderIsEnabled,
-         Boolean _notificationIsSent,
-         LocalDateTime _dateTime
-    ) {
+                    Integer _bookId,
+                    Boolean _reminderIsEnabled,
+                    Boolean _notificationIsSent,
+                    LocalDateTime _dateTime,
+                    String _reminderEmail) {
         this.reminderId = _reminderId;
         this.bookId = _bookId;
         this.reminderIsEnabled = _reminderIsEnabled;
         this.notificationIsSent = _notificationIsSent;
         this.datetime = _dateTime;
+        this.reminderEmail = _reminderEmail;
     }
 
     public LocalDateTime getDatetime() { return this.datetime; }

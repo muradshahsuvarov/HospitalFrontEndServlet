@@ -105,6 +105,10 @@ public class UserDbEntity extends DbEntity{
                 _userAccount.append(_user.getIsDoctor());
                 _userAccount.append(";");
                 _userAccount.append(_user.getPersonalInfo());
+                _userAccount.append(";");
+                _userAccount.append(_user.getReminderEmail());
+                _userAccount.append(";");
+                _userAccount.append(_user.getBookingEmail());
 
 
                 Boolean user_registration_step = AddRow(_userAccount);
@@ -149,6 +153,10 @@ public class UserDbEntity extends DbEntity{
             sb.append("isDoctor");
             sb.append(";");
             sb.append("personalInfo");
+            sb.append(";");
+            sb.append("ReminderEmail");
+            sb.append(";");
+            sb.append("BookingEmail");
             sb.append('\n');
             writer.write(sb.toString());
 
