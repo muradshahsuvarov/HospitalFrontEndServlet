@@ -11,19 +11,20 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         //GenerateTables();
-        //RegisterAccount(true);
+        //RegisterAccount(false);
         //DeleteUser("surikshahsuvarov@gmail.com");
         //DeletePatient("surikshahsuvarov@gmail.com");
         Account acc = AuthenticateUser();
         //acc.Search("Treatment");
         //acc.CreateSchedule();
-        acc.CreateBooking(acc.username, "Heart Diagnosis");
+        //acc.CreateAppointment(acc.username, "Heart Diagnosis");
+        acc.BookAppointment("muradshahsuvarov@gmail.com", "Heart Diagnosis");
     }
 
     public static Account AuthenticateUser() {
 
         Authentication auth = new Authentication();
-        Account acc = new Account("muradshahsuvarov@gmail.com", "admin123");
+        Account acc = new Account("surkhayshahsuvarov@gmail.com", "admin123");
         acc = auth.authenticateAccount(acc);
         System.out.println("ACCOUNT USERNAME: " + acc.user.getUsername());
         if (acc.doctor != null && acc.patient == null) {
@@ -45,9 +46,9 @@ public class Main {
         Registration _registration = new Registration();
 
         User user_1 = new User(
-                "Murad",
+                "Surkhay",
                 "Shahsuvarov",
-                "muradshahsuvarov@gmail.com",
+                "surkhayshahsuvarov@gmail.com",
                 "muradshahsuvarov@gmail.com",
                 "admin123",
                 "+994517773925",

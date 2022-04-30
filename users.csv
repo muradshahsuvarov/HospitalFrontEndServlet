@@ -1,2 +1,3 @@
 Id;Name;Surname;Username;Email;Password;Phone;Age;Gender;isDoctor;personalInfo;ReminderEmail;BookingEmail
 0;Murad;Shahsuvarov;muradshahsuvarov@gmail.com;muradshahsuvarov@gmail.com;admin123;+994517773925;23;Male;true;Hello, I am a patient
+1;Surkhay;Shahsuvarov;surkhayshahsuvarov@gmail.com;muradshahsuvarov@gmail.com;admin123;+994517773925;23;Male;false;Hello, I am a patient

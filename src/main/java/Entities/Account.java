@@ -63,7 +63,55 @@ public class Account {
         }
     }
 
-    public void BookAppointment() { }
+    public void BookAppointment(String _ownerEmail, String _bookName) throws IOException {
+
+
+        if (this.isAuthenticated && doctor == null && patient != null) {
+
+            book_db = new BookDbEntity();
+            schedule_db = new ScheduleDbEntity();
+
+            Boolean updateScheduleDb = false;
+
+            for (var iterator_booking : book_db.bookings) {
+                if (iterator_booking.doctorEmail.contains(_ownerEmail) && iterator_booking.bookName.contains(_bookName)) {
+                    System.out.println("Book " + _bookName + " exists!");
+
+                    iterator_booking.patientEmail = username;
+                    iterator_booking.isBooked = true;
+                    updateScheduleDb = true;
+                    System.out.println("Appointment " + _bookName + " has been successfully booked!");
+                    break;
+                }
+            }
+
+            if (updateScheduleDb == true) {
+
+                book_db.CreateTable();
+
+                for (var iterator_booking : book_db.bookings) {
+
+                    StringBuilder book_sb = new StringBuilder();
+                    book_sb.append(iterator_booking.bookId);
+                    book_sb.append(";");
+                    book_sb.append(iterator_booking.bookName);
+                    book_sb.append(";");
+                    book_sb.append(iterator_booking.patientEmail);
+                    book_sb.append(";");
+                    book_sb.append(iterator_booking.doctorEmail);
+                    book_sb.append(";");
+                    book_sb.append(iterator_booking.isBooked);
+                    book_sb.append(";");
+                    book_sb.append(iterator_booking.dateTime);
+
+                    book_db.AddRow(book_sb);
+                }
+
+            }
+
+        }
+
+    }
 
     public void CancelAppointment() { }
 
@@ -87,7 +135,7 @@ public class Account {
 
     }
 
-    public void CreateBooking(String _ownerEmail, String _bookName) throws IOException {
+    public void CreateAppointment(String _ownerEmail, String _bookName) throws IOException {
 
         if (this.isAuthenticated && doctor != null && patient == null) {
 
@@ -118,9 +166,7 @@ public class Account {
                     System.out.println("Book " + _bookName + " has been successfully added!");
                 }
             }
-
         }
-
     }
 
     public void DeleteSchedule() { }

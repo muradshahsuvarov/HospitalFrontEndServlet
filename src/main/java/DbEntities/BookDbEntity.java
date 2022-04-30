@@ -7,14 +7,13 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
 public class BookDbEntity extends DbEntity {
 
-    List<Book> bookings;
+    public List<Book> bookings;
 
 
     public BookDbEntity(){
@@ -32,11 +31,11 @@ public class BookDbEntity extends DbEntity {
                     String[] item_row = line.split(";");
                     Book row_book = new Book(
                             Integer.parseInt(item_row[0]),
+                            item_row[1],
                             item_row[2],
                             item_row[3],
-                            item_row[4],
-                            Boolean.valueOf(item_row[5]),
-                            LocalDateTime.parse(item_row[6],DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
+                            Boolean.valueOf(item_row[4]),
+                            LocalDateTime.parse(item_row[5]));
 
                     bookings.add(row_book);
                 }
