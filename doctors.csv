@@ -1,2 +1,1 @@
-DoctorId;Specialization;Photo;Hospital;Service;ScheduleId
-
+DoctorId;Specialization;Photo;HospitalId;ServiceID;ScheduleId;Email

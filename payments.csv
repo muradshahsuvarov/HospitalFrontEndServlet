@@ -1,1 +1,1 @@
-PaymentId;DateTime;PatientId;DoctorId;Amount;HospitalId
+PaymentId;PatientId;DoctorId;Amount;HospitalId

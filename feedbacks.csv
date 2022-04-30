@@ -1,1 +1,1 @@
-FeedbackId;Email;Description;Datetime
+FeedbackId;PatientId;DoctorID;Description;Datetime
