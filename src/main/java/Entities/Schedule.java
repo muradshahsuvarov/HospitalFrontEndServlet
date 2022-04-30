@@ -3,17 +3,17 @@ package  Entities;
 public class Schedule {
 
     public Integer scheduleId;
-    public Integer bookingsEmail;
+    public String ownerEmail;
 
-    public Schedule(Integer _scheduleId) {
+    public Schedule(Integer _scheduleId,
+                    String _ownerEmail) {
         this.scheduleId = _scheduleId;
+        this.ownerEmail = _ownerEmail;
     }
 
 
     public void viewSchedule() { }
     public void viewAvailableSlots() { }
-    public Integer getAvailableSlotId() { return this.bookingsEmail; }
-    public void setAvailableSlots(Integer _availableSlots) { this.bookingsEmail = _availableSlots;}
 
     public void print() {}
 }

@@ -9,7 +9,7 @@ import java.util.List;
 public class ScheduleDbEntity extends DbEntity{
 
 
-    List<Schedule> schedules;
+    public List<Schedule> schedules;
 
     public ScheduleDbEntity() {
 
@@ -27,7 +27,9 @@ public class ScheduleDbEntity extends DbEntity{
 
                     String[] item_row = line.split(";");
 
-                    Schedule row_schedule = new Schedule(Integer.parseInt(item_row[0]));
+                    Schedule row_schedule = new Schedule(
+                            Integer.parseInt(item_row[0]),
+                            item_row[1]);
 
                     schedules.add(row_schedule);
 
@@ -74,7 +76,7 @@ public class ScheduleDbEntity extends DbEntity{
 
                 schedule_sb.append(schedule.scheduleId);
                 schedule_sb.append(';');
-                schedule_sb.append(schedule.bookingsEmail);
+                schedule_sb.append(schedule.ownerEmail);
 
                 Boolean hospital_registration_step = AddRow(schedule_sb);
             }
@@ -95,9 +97,8 @@ public class ScheduleDbEntity extends DbEntity{
             StringBuilder sb = new StringBuilder();
             sb.append("ScheduleId");
             sb.append(';');
-            sb.append("BookingsEmail");
+            sb.append("OwnerEmail");
             sb.append('\n');
-            //sb.append(<User Data>)
             writer.write(sb.toString());
 
             System.out.println("Table has been successfully created!");

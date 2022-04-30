@@ -32,10 +32,9 @@ public class BookDbEntity extends DbEntity {
                     String[] item_row = line.split(";");
                     Book row_book = new Book(
                             Integer.parseInt(item_row[0]),
-                            item_row[1],
                             item_row[2],
-                            Integer.parseInt(item_row[3]),
-                            Integer.parseInt(item_row[4]),
+                            item_row[3],
+                            item_row[4],
                             Boolean.valueOf(item_row[5]),
                             LocalDateTime.parse(item_row[6],DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
 
@@ -89,9 +88,9 @@ public class BookDbEntity extends DbEntity {
                 bookins_sb.append(";");
                 bookins_sb.append(booking.bookName);
                 bookins_sb.append(";");
-                bookins_sb.append("" + booking.patientId);
+                bookins_sb.append("" + booking.patientEmail);
                 bookins_sb.append(";");
-                bookins_sb.append("" + booking.doctorId);
+                bookins_sb.append("" + booking.doctorEmail);
                 bookins_sb.append(";");
                 bookins_sb.append("" + booking.isBooked);
                 bookins_sb.append(";");
@@ -116,20 +115,15 @@ public class BookDbEntity extends DbEntity {
             StringBuilder sb = new StringBuilder();
             sb.append("BookId");
             sb.append(';');
-            sb.append("BookEmail");
-            sb.append(';');
             sb.append("BookName");
             sb.append(';');
-            sb.append("PatientId");
+            sb.append("PatientEmail");
             sb.append(';');
-            sb.append("DoctorId");
+            sb.append("DoctorEmail");
             sb.append(';');
             sb.append("IsBooked");
             sb.append(';');
             sb.append("Datetime");
-            sb.append('\n');
-
-            //sb.append(<User Data>)
             sb.append('\n');
 
             writer.write(sb.toString());

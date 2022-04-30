@@ -12,12 +12,38 @@ import java.util.stream.Stream;
 
 public class ServiceDbEntity extends  DbEntity{
 
-    List<Service> services;
+    public List<Service> services;
 
     public ServiceDbEntity() {
 
         services = new ArrayList<Service>();
 
+        String line = "";
+
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("services.csv"));
+            long row_number = 0;
+            while((line = br.readLine()) != null) {
+                if (row_number >= 1) {
+
+                    String[] item_row = line.split(";");
+
+                    Service row_service = new Service(
+                            Integer.parseInt(item_row[0]),
+                            item_row[2],
+                            item_row[3],
+                            Integer.parseInt(item_row[4]),
+                            item_row[5]);
+
+
+                    services.add(row_service);
+
+                }
+                row_number++;
+            }
+        }catch(Exception e) {
+            System.out.println("Doctor Parse Error: " + e);
+        }
     }
 
     @Override

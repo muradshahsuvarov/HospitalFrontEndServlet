@@ -1,2 +1,2 @@
-BookId;BookEmail;BookName;PatientId;DoctorId;IsBooked;Datetime
-
+BookId;BookName;PatientEmail;DoctorEmail;IsBooked;Datetime
+1;Heart Diagnosis;null;muradshahsuvarov@gmail.com;false;2022-04-30T23:41:17.765062200

@@ -11,13 +11,16 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         //GenerateTables();
-        //RegisterAccount(false);
+        //RegisterAccount(true);
         //DeleteUser("surikshahsuvarov@gmail.com");
         //DeletePatient("surikshahsuvarov@gmail.com");
-        AuthenticateUser();
+        Account acc = AuthenticateUser();
+        //acc.Search("Treatment");
+        //acc.CreateSchedule();
+        acc.CreateBooking(acc.username, "Heart Diagnosis");
     }
 
-    public static void AuthenticateUser() {
+    public static Account AuthenticateUser() {
 
         Authentication auth = new Authentication();
         Account acc = new Account("muradshahsuvarov@gmail.com", "admin123");
@@ -32,8 +35,9 @@ public class Main {
             System.out.println("ACCOUNT PATIENT: " + acc.patient);
             System.out.println("ACCOUNT PATIENT ID: " + acc.patient.patientId);
             System.out.println("ACCOUNT PATIENT EMAIL: " + acc.patient.email);
-
         }
+
+        return acc;
     }
 
     public static void RegisterAccount(@NotNull Boolean _isDoctor) throws IOException {
@@ -54,6 +58,7 @@ public class Main {
 
         if (_isDoctor) {
 
+            // Creating the hospital object and appending its properties to the StringBuilder for the further CSV loading
             Hospital hospital_1 = new Hospital(0,"Saint Louis Hospital", "Saint Louis");
             StringBuilder hospital_1_sb = new StringBuilder();
             hospital_1_sb.append(hospital_1.hospitalId);
@@ -62,9 +67,11 @@ public class Main {
             hospital_1_sb.append(";");
             hospital_1_sb.append(hospital_1.hospitalAddress);
 
+            // Initializing the Hospital Dataset
             HospitalDbEntity hospital_db = new HospitalDbEntity();
             hospital_db.AddRow(hospital_1_sb);
 
+            // Initializing the service
             Service service_1 = new Service(
                     0,
                     "Cardio Treatments",
@@ -75,10 +82,11 @@ public class Main {
 
             Doctor doctor_1 = new Doctor("Cardiologist",
                     234534,
-                    0,
-                    0,
+                    hospital_1.hospitalId,
+                    service_1.serviceId,
                     user_1);
 
+            // Setting up the doctor's email address to the service
             service_1.email = doctor_1.getEmail();
 
             ServiceDbEntity service_db = new ServiceDbEntity();
@@ -119,10 +127,6 @@ public class Main {
                 System.out.println("Registration was successful!");
 
         }
-
-    }
-
-    public static void Authenticate() {
 
     }
 

@@ -1,6 +1,7 @@
 package DbEntities;
 
 import Entities.Doctor;
+import Entities.User;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -8,7 +9,7 @@ import java.util.List;
 
 public class DoctorDbEntity extends DbEntity {
 
-    List<Doctor> doctors;
+    public List<Doctor> doctors;
 
     public DoctorDbEntity() {
 
@@ -25,11 +26,14 @@ public class DoctorDbEntity extends DbEntity {
 
                     String[] item_row = line.split(";");
 
+                    Doctor row_hospital = new Doctor(
+                            item_row[1],
+                            Integer.parseInt(item_row[2]),
+                            Integer.parseInt(item_row[3]),
+                            Integer.parseInt(item_row[4]),
+                            GetUser(item_row[6]));
 
-                    // Inflating the hospital object for further operations
-
-
-
+                    doctors.add(row_hospital);
 
                 }
                 row_number++;
@@ -37,19 +41,35 @@ public class DoctorDbEntity extends DbEntity {
         }catch(Exception e) {
             System.out.println("Doctor Parse Error: " + e);
         }
-
     }
 
-    public void GetHospitalFromFile(){
+    public User GetUser(String _email) {
 
         String line = "";
+        User user = null;
+
         try {
-            BufferedReader br = new BufferedReader(new FileReader("hospitals.csv"));
+            BufferedReader br = new BufferedReader(new FileReader("users.csv"));
             long row_number = 0;
             while((line = br.readLine()) != null) {
                 if (row_number >= 1) {
+
                     String[] item_row = line.split(";");
 
+                    if (item_row[4].equals(_email)) {
+                        user = new User(item_row[1],
+                                item_row[2],
+                                item_row[3],
+                                item_row[4],
+                                item_row[5],
+                                item_row[6],
+                                Integer.parseInt(item_row[7]),
+                                item_row[8],
+                                Boolean.valueOf(item_row[9]),
+                                item_row[10]);
+
+                        break;
+                    }
 
                 }
                 row_number++;
@@ -58,6 +78,7 @@ public class DoctorDbEntity extends DbEntity {
             System.out.println("Doctor Parse Error: " + e);
         }
 
+        return user;
     }
 
     @Override
