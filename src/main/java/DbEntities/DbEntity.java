@@ -12,4 +12,5 @@ public abstract class DbEntity {
     public void CreateTable() {}
 
     public Boolean AddRow(StringBuilder _row) throws IOException { return false; }
+
 }

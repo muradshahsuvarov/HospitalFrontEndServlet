@@ -11,20 +11,52 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         //GenerateTables();
-        //RegisterAccount(false);
-        //DeleteUser("surikshahsuvarov@gmail.com");
-        //DeletePatient("surikshahsuvarov@gmail.com");
-        Account acc = AuthenticateUser();
-        //acc.Search("Treatment");
+
+        /*
+        RegisterAccount("Laman",
+                "Guluzade",
+                "lamanguluzade@gmail.com",
+                "lamanguluzade@gmail.com",
+                "admin123",
+                "+994552345345",
+                20,
+                "Female",
+                true,
+                "Hello, I am a doctor!");
+
+        RegisterAccount("Zumrud",
+                "Mammadova",
+                "zumrudmammadova@gmail.com",
+                "zumrudmammadova@gmail.com",
+                "admin123",
+                "+994552543345",
+                20,
+                "Female",
+                false,
+                "Hello, I am a patient!"); */
+
+        //Account acc = AuthenticateUser("lamanguluzade@gmail.com", "admin123");
         //acc.CreateSchedule();
-        //acc.CreateAppointment(acc.username, "Heart Diagnosis");
-        acc.BookAppointment("muradshahsuvarov@gmail.com", "Heart Diagnosis");
+        //acc.CreateAppointment(acc.username, "Main Heart Diagnosis");
+
+        //Account acc = AuthenticateUser("zumrudmammadova@gmail.com", "admin123");
+        //acc.Search("lamanguluzade@gmail.com");
+        //acc.Search("Heart");
+        //acc.BookAppointment("lamanguluzade@gmail.com", "Heart Diagnosis");
+
+        //DeleteAppointment("1");
+
+        //DeleteUser("lamanguluzade@gmail.com");
+        //DeletePatient("lamanguluzade@gmail.com");
+
+        //DeleteUser("zumrudmammadova@gmail.com");
+        //DeleteDoctor("zumrudmammadova@gmail.com");
     }
 
-    public static Account AuthenticateUser() {
+    public static Account AuthenticateUser(String _username, String _password) {
 
         Authentication auth = new Authentication();
-        Account acc = new Account("surkhayshahsuvarov@gmail.com", "admin123");
+        Account acc = new Account(_username, _password);
         acc = auth.authenticateAccount(acc);
         System.out.println("ACCOUNT USERNAME: " + acc.user.getUsername());
         if (acc.doctor != null && acc.patient == null) {
@@ -41,21 +73,29 @@ public class Main {
         return acc;
     }
 
-    public static void RegisterAccount(@NotNull Boolean _isDoctor) throws IOException {
+    public static void RegisterAccount(String _name, String _surname,
+                                       String _username,
+                                       String _email,
+                                       String _password,
+                                       String _phone,
+                                       Integer _age,
+                                       String _gender,
+                                       @NotNull Boolean _isDoctor,
+                                       String _personalInfo) throws IOException {
 
         Registration _registration = new Registration();
 
         User user_1 = new User(
-                "Surkhay",
-                "Shahsuvarov",
-                "surkhayshahsuvarov@gmail.com",
-                "muradshahsuvarov@gmail.com",
-                "admin123",
-                "+994517773925",
-                23,
-                "Male",
+                _name,
+                _surname,
+                _username,
+                _email,
+                _password,
+                _phone,
+                _age,
+                _gender,
                 _isDoctor,
-                "Hello, I am a patient");
+                _personalInfo);
 
         if (_isDoctor) {
 
@@ -177,6 +217,13 @@ public class Main {
         for (var item : dbEntityList) {
             item.CreateTable();
         }
+
+    }
+
+    public static void DeleteAppointment(String _id) {
+
+        BookDbEntity book_db = new BookDbEntity();
+        book_db.DeleteData(_id);
 
     }
 
