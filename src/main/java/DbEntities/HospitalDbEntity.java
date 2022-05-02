@@ -12,7 +12,7 @@ import java.util.stream.Stream;
 
 public class HospitalDbEntity extends DbEntity {
 
-    List<Hospital> hospitals;
+    public List<Hospital> hospitals;
 
     public HospitalDbEntity() {
 

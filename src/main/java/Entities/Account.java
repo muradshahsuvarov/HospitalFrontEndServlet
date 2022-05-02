@@ -1,9 +1,6 @@
 package Entities;
 
-import DbEntities.BookDbEntity;
-import DbEntities.DoctorDbEntity;
-import DbEntities.ScheduleDbEntity;
-import DbEntities.ServiceDbEntity;
+import DbEntities.*;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -26,40 +23,56 @@ public class Account {
     public ServiceDbEntity service_db;
     public ScheduleDbEntity schedule_db;
     public BookDbEntity book_db;
+    public HistoryDbEntity historyDbEntity;
 
     public Account(String _username, String _password) {
         this.username = _username;
         this.password = _password;
     }
 
-    // Using either doctor or service names
-    public void Search(String _key) {
-        if (isAuthenticated) {
 
-            doctor_db = new DoctorDbEntity();
-            service_db = new ServiceDbEntity();
+    public void AddToHistory(String _description) throws IOException {
+
+        historyDbEntity = new HistoryDbEntity();
+        StringBuilder history_sb = new StringBuilder();
+
+        long lineCount_history;
+        try (Stream<String> stream = Files.lines(Path.of("history.csv"), StandardCharsets.UTF_8)) {
+            lineCount_history = stream.count();
+        }
+
+        history_sb.append(lineCount_history);
+        history_sb.append(this.username);
+        history_sb.append(_description);
+        history_sb.append(LocalDateTime.now());
+        historyDbEntity.AddRow(history_sb);
+
+    }
+    public void SearchDoctor(String _key) throws IOException {
+        if (isAuthenticated) {
 
             System.out.println("Doctor Set Size: " + doctor_db.doctors.size());
             System.out.println("Service Set Size: " + service_db.services.size());
 
-            for (var iterator_doctor : doctor_db.doctors) {
-                if ((iterator_doctor.name + " " + iterator_doctor.surname).contains(_key)) {
-                    System.out.println("\nSearch Results: ");
-                    System.out.println("\nDoctor First Name: " + iterator_doctor.name);
-                    System.out.println("\nDoctor Last Name: " + iterator_doctor.surname);
-                    System.out.println("\nDoctor Specialization: " + iterator_doctor.specialization);
-                }
-            }
+            Search _search = new Search();
+            _search.getDoctor(_key);
+            _search.getMedicalService(_key);
 
-            for (var iterator_service : service_db.services) {
-                if (iterator_service.serviceName.contains(_key) || iterator_service.serviceDescription.contains(_key)) {
-                    System.out.print("\nSearch Results: ");
-                    System.out.print("\nService Name: " + iterator_service.serviceName);
-                    System.out.print("\nService Description: " + iterator_service.serviceDescription);
-                    System.out.print("\nService Price: " + iterator_service.price);
-                    System.out.print("\nService Currency: " + iterator_service.currency);
-                }
-            }
+            AddToHistory("Doctor " + _key + " is being searched...");
+        }
+    }
+
+    // Using doctor
+    public void SearchHospital(String _key) throws IOException {
+        if (isAuthenticated) {
+
+            System.out.println("Doctor Set Size: " + doctor_db.doctors.size());
+            System.out.println("Service Set Size: " + service_db.services.size());
+
+            Search _search = new Search();
+            _search.getHospital(_key);
+
+            AddToHistory("Hospital " + _key + " is being searched...");
         }
     }
 
@@ -81,6 +94,7 @@ public class Account {
                     iterator_booking.isBooked = true;
                     updateScheduleDb = true;
                     System.out.println("Appointment " + _bookName + " has been successfully booked!");
+                    AddToHistory("Appointment " + _bookName + " has been successfully booked!");
                     break;
                 }
             }
@@ -113,7 +127,11 @@ public class Account {
 
     }
 
-    public void CancelAppointment() { }
+    public void CancelAppointment(String _bookName) throws IOException {
+
+        AddToHistory("Appointment " + _bookName + " has been successfully cancelled!");
+
+    }
 
     public void CreateSchedule() throws IOException {
 
@@ -131,6 +149,8 @@ public class Account {
             schedule_sb.append(";");
             schedule_sb.append(doctor.email);
             schedule_db.AddRow(schedule_sb);
+
+            AddToHistory("Schedule with Id = " + ((int)lineCount - 1) + " has been successfully created!");
         }
 
     }
@@ -164,10 +184,13 @@ public class Account {
                     book_db.AddRow(book_sb);
 
                     System.out.println("Book " + _bookName + " has been successfully added!");
+                    AddToHistory("Book " + _bookName + " has been successfully added!");
                 }
             }
         }
     }
 
-    public void DeleteSchedule() { }
+    public void DeleteSchedule() throws IOException {
+        AddToHistory("Schedule has been successfully deleted!");
+    }
 }
