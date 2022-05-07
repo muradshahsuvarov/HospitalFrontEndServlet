@@ -1,3 +1,1 @@
 Id;Name;Surname;Username;Email;Password;Phone;Age;Gender;isDoctor;personalInfo;ReminderEmail;BookingEmail
-0;Laman;Guluzade;lamanguluzade@gmail.com;lamanguluzade@gmail.com;admin123;+994552345345;20;Female;true;Hello, I am a doctor!
-1;Zumrud;Mammadova;zumrudmammadova@gmail.com;zumrudmammadova@gmail.com;admin123;+994552543345;20;Female;false;Hello, I am a patient!
