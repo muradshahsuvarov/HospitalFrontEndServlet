@@ -5,14 +5,19 @@ C:\Laman\ClassAnalysis\FrontEndV6.0.0\src\main\java\DbEntities\PaymentDbEntity.j
 C:\Laman\ClassAnalysis\FrontEndV6.0.0\src\main\java\Entities\Registration.java
 C:\Laman\ClassAnalysis\FrontEndV6.0.0\src\main\java\Entities\Account.java
 C:\Laman\ClassAnalysis\FrontEndV6.0.0\src\main\java\Entities\Doctor.java
+C:\Laman\ClassAnalysis\FrontEndV6.0.0\src\main\java\Entities\MainFunctions.java
 C:\Laman\ClassAnalysis\FrontEndV6.0.0\src\main\java\Entities\Feedback.java
 C:\Laman\ClassAnalysis\FrontEndV6.0.0\src\main\java\Entities\Payment.java
 C:\Laman\ClassAnalysis\FrontEndV6.0.0\src\main\java\Entities\User.java
+C:\Laman\ClassAnalysis\FrontEndV6.0.0\src\main\java\Frontend\SearchServlet.java
+C:\Laman\ClassAnalysis\FrontEndV6.0.0\src\main\java\Frontend\DoctorAccServlet.java
 C:\Laman\ClassAnalysis\FrontEndV6.0.0\src\main\java\DbEntities\HistoryDbEntity.java
+C:\Laman\ClassAnalysis\FrontEndV6.0.0\src\main\java\Frontend\RegisterServlet.java
 C:\Laman\ClassAnalysis\FrontEndV6.0.0\src\main\java\DbEntities\FeedbackDbEntity.java
 C:\Laman\ClassAnalysis\FrontEndV6.0.0\src\main\java\DbEntities\HospitalDbEntity.java
 C:\Laman\ClassAnalysis\FrontEndV6.0.0\src\main\java\DbEntities\ScheduleDbEntity.java
 C:\Laman\ClassAnalysis\FrontEndV6.0.0\src\main\java\Entities\Hospital.java
+C:\Laman\ClassAnalysis\FrontEndV6.0.0\src\main\java\Frontend\JspServlet.java
 C:\Laman\ClassAnalysis\FrontEndV6.0.0\src\main\java\Entities\Patient.java
 C:\Laman\ClassAnalysis\FrontEndV6.0.0\src\main\java\DbEntities\DbEntity.java
 C:\Laman\ClassAnalysis\FrontEndV6.0.0\src\main\java\DbEntities\BookDbEntity.java
@@ -26,4 +31,6 @@ C:\Laman\ClassAnalysis\FrontEndV6.0.0\src\main\java\Entities\Schedule.java
 C:\Laman\ClassAnalysis\FrontEndV6.0.0\src\main\java\DbEntities\DoctorDbEntity.java
 C:\Laman\ClassAnalysis\FrontEndV6.0.0\src\main\java\Entities\Book.java
 C:\Laman\ClassAnalysis\FrontEndV6.0.0\src\main\java\Entities\Authentication.java
-C:\Laman\ClassAnalysis\FrontEndV6.0.0\src\main\java\Frontend\MainServlet.java
+C:\Laman\ClassAnalysis\FrontEndV6.0.0\src\main\java\Frontend\PatientAccServlet.java
+C:\Laman\ClassAnalysis\FrontEndV6.0.0\src\main\java\Frontend\PatientSearchServlet.java
+C:\Laman\ClassAnalysis\FrontEndV6.0.0\src\main\java\Frontend\LoginServlet.java

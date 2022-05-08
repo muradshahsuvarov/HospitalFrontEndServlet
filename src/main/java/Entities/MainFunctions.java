@@ -1,73 +1,31 @@
+package Entities;
+
 import DbEntities.*;
-import Entities.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Main {
-
-    public static void main(String[] args) throws IOException {
-
-        GenerateTables();
-
-        /*
-        RegisterAccount("Laman",
-                "Guluzade",
-                "lamanguluzade@gmail.com",
-                "lamanguluzade@gmail.com",
-                "admin123",
-                "+994552345345",
-                20,
-                "Female",
-                true,
-                "Hello, I am a doctor!");
-
-        RegisterAccount("Zumrud",
-                "Mammadova",
-                "zumrudmammadova@gmail.com",
-                "zumrudmammadova@gmail.com",
-                "admin123",
-                "+994552543345",
-                20,
-                "Female",
-                false,
-                "Hello, I am a patient!"); */
-
-        //Account acc = AuthenticateUser("lamanguluzade@gmail.com", "admin123");
-        //acc.CreateSchedule();
-        //acc.CreateAppointment(acc.username, "Main Heart Diagnosis");
-
-        //Account acc = AuthenticateUser("zumrudmammadova@gmail.com", "admin123");
-        //acc.Search("lamanguluzade@gmail.com");
-        //acc.Search("Heart");
-        //acc.BookAppointment("lamanguluzade@gmail.com", "Heart Diagnosis");
-
-        //DeleteAppointment("1");
-
-        //DeleteUser("lamanguluzade@gmail.com");
-        //DeletePatient("lamanguluzade@gmail.com");
-
-        //DeleteUser("zumrudmammadova@gmail.com");
-        //DeleteDoctor("zumrudmammadova@gmail.com");
-    }
+public class MainFunctions {
 
     public static Account AuthenticateUser(String _username, String _password) {
 
         Authentication auth = new Authentication();
         Account acc = new Account(_username, _password);
         acc = auth.authenticateAccount(acc);
-        System.out.println("ACCOUNT USERNAME: " + acc.user.getUsername());
-        if (acc.doctor != null && acc.patient == null) {
-            System.out.println("ACCOUNT DOCTOR SPEC: " + acc.doctor.specialization);
-            System.out.println("ACCOUNT DOCTOR ID: " + acc.doctor.doctorId);
+        if (acc.user != null) {
+            System.out.println("ACCOUNT USERNAME: " + acc.user.getUsername());
+            if (acc.doctor != null && acc.patient == null) {
+                System.out.println("ACCOUNT DOCTOR SPEC: " + acc.doctor.specialization);
+                System.out.println("ACCOUNT DOCTOR ID: " + acc.doctor.doctorId);
 
-        }else if (acc.doctor == null && acc.patient != null) {
+            }else if (acc.doctor == null && acc.patient != null) {
 
-            System.out.println("ACCOUNT PATIENT: " + acc.patient);
-            System.out.println("ACCOUNT PATIENT ID: " + acc.patient.patientId);
-            System.out.println("ACCOUNT PATIENT EMAIL: " + acc.patient.email);
+                System.out.println("ACCOUNT PATIENT: " + acc.patient);
+                System.out.println("ACCOUNT PATIENT ID: " + acc.patient.patientId);
+                System.out.println("ACCOUNT PATIENT EMAIL: " + acc.patient.email);
+            }
         }
 
         return acc;
@@ -159,8 +117,8 @@ public class Main {
 
             Patient patient_1 = new Patient(user_1);
 
-             Boolean registration_user_status = _registration.createUserAccount(user_1);
-             Boolean registration_patient_status = _registration.createPatientAccount(patient_1);
+            Boolean registration_user_status = _registration.createUserAccount(user_1);
+            Boolean registration_patient_status = _registration.createPatientAccount(patient_1);
 
             if (!registration_user_status || !registration_patient_status)
                 System.out.println("Registration was not successful!");

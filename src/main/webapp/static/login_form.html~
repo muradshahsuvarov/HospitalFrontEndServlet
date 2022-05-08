@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+<h1>Registration</h1>
+<hr>
+<br>
+<form method="post" action="/my-app/login-servlet">
+    <div class="container" style="padding: 50px 0; margin-left: 500px">
+        <input name="email" placeholder="Email" style="margin-top: 15px;">
+        <br>
+        <input type="password" name="password" placeholder="Password" style="margin-top: 15px;">
+        <br>
+        <br>
+        <button type="submit" style="margin-top: 15px;">Register</button>
+    </div>
+</form>
+</body>
+</html>

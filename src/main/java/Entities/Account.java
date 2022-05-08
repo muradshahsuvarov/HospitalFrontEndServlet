@@ -7,6 +7,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.stream.Stream;
 
 public class Account {
@@ -19,11 +20,13 @@ public class Account {
     public Doctor doctor;
     public Patient patient;
 
-    public DoctorDbEntity doctor_db;
-    public ServiceDbEntity service_db;
     public ScheduleDbEntity schedule_db;
     public BookDbEntity book_db;
     public HistoryDbEntity historyDbEntity;
+
+    public Account() {
+
+    }
 
     public Account(String _username, String _password) {
         this.username = _username;
@@ -48,32 +51,25 @@ public class Account {
         historyDbEntity.AddRow(history_sb);
 
     }
-    public void SearchDoctor(String _key) throws IOException {
-        if (isAuthenticated) {
-
-            System.out.println("Doctor Set Size: " + doctor_db.doctors.size());
-            System.out.println("Service Set Size: " + service_db.services.size());
+    public ArrayList<String> SearchDoctors(String _key) throws IOException {
 
             Search _search = new Search();
-            _search.getDoctor(_key);
-            _search.getMedicalService(_key);
+            ArrayList<String> _searchedDoctors = _search.getDoctors(_key);
+            ArrayList<String> _searchedServices =_search.getMedicalServices(_key);
 
             AddToHistory("Doctor " + _key + " is being searched...");
-        }
+
+            return _searchedDoctors;
     }
+
+
 
     // Using doctor
     public void SearchHospital(String _key) throws IOException {
-        if (isAuthenticated) {
-
-            System.out.println("Doctor Set Size: " + doctor_db.doctors.size());
-            System.out.println("Service Set Size: " + service_db.services.size());
-
             Search _search = new Search();
-            _search.getHospital(_key);
+            _search.getHospitals(_key);
 
             AddToHistory("Hospital " + _key + " is being searched...");
-        }
     }
 
     public void BookAppointment(String _ownerEmail, String _bookName) throws IOException {
