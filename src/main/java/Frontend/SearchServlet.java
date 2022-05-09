@@ -7,8 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import static Entities.MainFunctions.AuthenticateUser;
-
 @WebServlet("search-doc-ser-servlet")
 public class SearchServlet extends HttpServlet {
 
@@ -23,14 +21,12 @@ public class SearchServlet extends HttpServlet {
         String auth_password = req.getParameter("password");
         String search_params = req.getParameter("search-params"); // Is a key
 
-        if (AuthenticateUser(auth_email, auth_password) == null) {
-            resp.getWriter().write("Search Failed!\n");
-        }else{
+
             req.setAttribute("email", auth_email);
             req.setAttribute("password", auth_password);
             req.setAttribute("search-params", search_params);
             getServletContext().getRequestDispatcher("/patient-search-serv").forward(req, resp);
-        }
+
 
     }
 }
