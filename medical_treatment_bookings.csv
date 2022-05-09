@@ -1,3 +1,4 @@
 BookId;BookName;PatientEmail;DoctorEmail;IsBooked;Datetime
 1;CardioTesting;muradshahsuvarov@gmail.com;surkhayshahsuvarov@gmail.com;true;2022-05-09T13:05:39.502881
-2;StomachTesting;null;surkhayshahsuvarov@gmail.com;false;2022-05-09T13:13:00.193748100
+2;StomachTesting;muradshahsuvarov@gmail.com;surkhayshahsuvarov@gmail.com;true;2022-05-09T13:13:00.193748100
+3;StomachTestingNew;null;surkhayshahsuvarov@gmail.com;false;2022-05-09T14:59:35.812316600

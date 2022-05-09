@@ -27,6 +27,7 @@ C:\Laman\ClassAnalysis\FrontEndV6.0.0\src\main\java\DbEntities\BookDbEntity.java
 C:\Laman\ClassAnalysis\FrontEndV6.0.0\src\main\java\DbEntities\UserDbEntity.java
 C:\Laman\ClassAnalysis\FrontEndV6.0.0\src\main\java\DbEntities\PatientDbEntity.java
 C:\Laman\ClassAnalysis\FrontEndV6.0.0\src\main\java\Frontend\CreateAppointmentServlet.java
+C:\Laman\ClassAnalysis\FrontEndV6.0.0\src\main\java\Frontend\DoctorAppointsServlet.java
 C:\Laman\ClassAnalysis\FrontEndV6.0.0\src\main\java\Entities\Reminder.java
 C:\Laman\ClassAnalysis\FrontEndV6.0.0\src\main\java\Main.java
 C:\Laman\ClassAnalysis\FrontEndV6.0.0\src\main\java\Entities\Service.java

@@ -62,6 +62,17 @@ public class Account {
         return _searchedAppointments;
     }
 
+    public ArrayList<String> SearchAppointmentByEmail(String _email) throws IOException {
+
+        System.out.println("SEARCH APP BY EMAIL, EMAIL ADDR: " + _email);
+        Search _search = new Search();
+        ArrayList<String> _searchedAppointments =_search.getMedicalServicesByEmail(_email);
+
+        AddToHistory("Doctor " + _email + " appointments are being searched...");
+
+        return _searchedAppointments;
+    }
+
     public ArrayList<String> SearchDoctors(String _key) throws IOException {
 
             Search _search = new Search();

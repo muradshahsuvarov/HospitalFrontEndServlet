@@ -11,6 +11,7 @@
         System.out.println("STRING EMAIL: "  + request.getAttribute("email"));
         System.out.println("STRING PASSWORD: "  + request.getAttribute("password"));
     %>
+    <% String email = (String) request.getAttribute("email"); %>
     <br>
     <hr/>
 </head>
@@ -21,6 +22,15 @@
         <br>
         <br>
         <button type="submit" style="margin-top: 15px;">Create Appointment</button>
+    </div>
+</form>
+<hr/>
+<form method="post" action="/my-app/doctor-appointment-list">
+    <div class="container" style="padding: 50px 0; margin-left: 500px">
+        <input type="hidden" name="email" value=<%=email %> />
+        <br>
+        <br>
+        <button type="submit" style="margin-top: 15px;">My Appointments</button>
     </div>
 </form>
 </body>

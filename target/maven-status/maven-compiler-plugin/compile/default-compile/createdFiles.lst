@@ -5,6 +5,7 @@ Frontend\BookListServlet.class
 Entities\Hospital.class
 DbEntities\PaymentDbEntity.class
 Entities\Account.class
+Frontend\DoctorAppointsServlet.class
 Frontend\PatientAccServlet.class
 Entities\User.class
 Entities\MainFunctions.class

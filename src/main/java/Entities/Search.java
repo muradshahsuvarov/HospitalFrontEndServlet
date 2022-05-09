@@ -44,6 +44,41 @@ public class Search {
         return null;
     }
 
+
+    public ArrayList<String> getMedicalServicesByEmail(String _doctorEmail) {
+
+        book_db = new BookDbEntity();
+        System.out.println("BOOKINGS SIZE: " + book_db.bookings.size());
+        ArrayList<String> _searchedService =  new ArrayList<String>();
+        for (var iterator_service : book_db.bookings) {
+            System.out.println("BOOKING OWNER: " + iterator_service.doctorEmail);
+            if (iterator_service.doctorEmail.equals(_doctorEmail)) {
+                System.out.println("BOOKING " + iterator_service.bookName +
+                        " belongs to " + _doctorEmail);
+
+                StringBuilder sb = new StringBuilder();
+                sb.append(iterator_service.bookName);
+                sb.append(",");
+                sb.append(iterator_service.patientEmail);
+                sb.append(",");
+                sb.append(iterator_service.doctorEmail);
+                sb.append(",");
+                sb.append(String.valueOf(iterator_service.isBooked));
+                sb.append(",");
+                sb.append(iterator_service.dateTime);
+
+                _searchedService.add(sb.toString());
+
+
+                System.out.print("\nSearch Results: ");
+                System.out.print("\nBook Name: " + iterator_service.bookName);
+
+            }
+        }
+
+        return _searchedService;
+    }
+
     public ArrayList<String> getDoctors(String _name) {
         doctor_db = new DoctorDbEntity();
         for (var iterator_doctor : doctor_db.doctors) {
