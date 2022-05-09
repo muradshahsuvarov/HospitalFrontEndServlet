@@ -1,6 +1,7 @@
 Entities\Schedule.class
 DbEntities\FeedbackDbEntity.class
 DbEntities\ScheduleDbEntity.class
+Frontend\BookListServlet.class
 Entities\Hospital.class
 DbEntities\PaymentDbEntity.class
 Entities\Account.class
@@ -10,6 +11,7 @@ Entities\MainFunctions.class
 DbEntities\BookDbEntity.class
 Main.class
 Entities\Service.class
+Frontend\BookAppointmentServlet.class
 DbEntities\ReminderDbEntity.class
 Entities\Doctor.class
 DbEntities\DbEntity.class
@@ -28,6 +30,7 @@ Frontend\LoginServlet.class
 Frontend\RegisterServlet.class
 Frontend\JspServlet.class
 DbEntities\HistoryDbEntity.class
+Frontend\BookServlet.class
 Frontend\PatientSearchServlet.class
 Entities\History.class
 Entities\Book.class

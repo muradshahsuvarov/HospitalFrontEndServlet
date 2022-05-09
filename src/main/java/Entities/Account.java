@@ -52,14 +52,14 @@ public class Account {
 
     }
 
-    public ArrayList<String> SearchService(String _key) throws IOException {
+    public ArrayList<String> SearchAppointment(String _key) throws IOException {
 
         Search _search = new Search();
-        ArrayList<String> _searchedServices =_search.getMedicalServices(_key);
+        ArrayList<String> _searchedAppointments =_search.getMedicalServices(_key);
 
-        AddToHistory("Service " + _key + " is being searched...");
+        AddToHistory("Appointment " + _key + " is being searched...");
 
-        return _searchedServices;
+        return _searchedAppointments;
     }
 
     public ArrayList<String> SearchDoctors(String _key) throws IOException {

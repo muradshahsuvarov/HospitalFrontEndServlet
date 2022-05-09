@@ -27,6 +27,14 @@
         <servlet-name>search-servlet</servlet-name>
         <url-pattern>/srch-servlet</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>book-servlet</servlet-name>
+        <servlet-class>Frontend.BookServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>book-servlet</servlet-name>
+        <url-pattern>/book-servlet</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>default</servlet-name>
         <url-pattern>/static/*</url-pattern>

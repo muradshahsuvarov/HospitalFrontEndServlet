@@ -1,8 +1,8 @@
 package Entities;
 
+import DbEntities.BookDbEntity;
 import DbEntities.DoctorDbEntity;
 import DbEntities.HospitalDbEntity;
-import DbEntities.ServiceDbEntity;
 
 import java.util.ArrayList;
 
@@ -10,33 +10,32 @@ public class Search {
 
     public DoctorDbEntity doctor_db;
     public HospitalDbEntity hospital_db;
-    public ServiceDbEntity service_db;
+    public BookDbEntity book_db;
 
     public Search() { }
 
     public ArrayList<String> getMedicalServices(String _serviceName) {
-        service_db = new ServiceDbEntity();
-        for (var iterator_service : service_db.services) {
-            if (iterator_service.serviceName.contains(_serviceName) || iterator_service.serviceDescription.contains(_serviceName)) {
+        book_db = new BookDbEntity();
+        for (var iterator_service : book_db.bookings) {
+            if (iterator_service.bookName.contains(_serviceName)) {
 
                 ArrayList<String> _searchedService =  new ArrayList<String>();
                 StringBuilder sb = new StringBuilder();
-                sb.append(iterator_service.serviceName);
+                sb.append(iterator_service.bookName);
                 sb.append(",");
-                sb.append(iterator_service.serviceDescription);
+                sb.append(iterator_service.patientEmail);
                 sb.append(",");
-                sb.append(String.valueOf(iterator_service.price));
+                sb.append(iterator_service.doctorEmail);
                 sb.append(",");
-                sb.append(iterator_service.currency);
+                sb.append(String.valueOf(iterator_service.isBooked));
+                sb.append(",");
+                sb.append(iterator_service.dateTime);
 
                 _searchedService.add(sb.toString());
 
 
                 System.out.print("\nSearch Results: ");
-                System.out.print("\nService Name: " + iterator_service.serviceName);
-                System.out.print("\nService Description: " + iterator_service.serviceDescription);
-                System.out.print("\nService Price: " + iterator_service.price);
-                System.out.print("\nService Currency: " + iterator_service.currency);
+                System.out.print("\nBook Name: " + iterator_service.bookName);
 
                 return _searchedService;
             }
