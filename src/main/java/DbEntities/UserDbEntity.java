@@ -128,7 +128,6 @@ public class UserDbEntity extends DbEntity{
 
     @Override
     public void CreateTable(){
-        super.CreateTable();
         try (PrintWriter writer = new PrintWriter("users.csv")) {
 
             StringBuilder sb = new StringBuilder();

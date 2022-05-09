@@ -5,31 +5,23 @@
 <head>
     <title>Home Page</title>
     <%
-
-        response.getWriter().write("First Message");
-
+        response.getWriter().write("Welcome " + request.getAttribute("firstname") + " " + request.getAttribute("lastname"));
+        request.setAttribute("email", request.getAttribute("email"));
+        request.setAttribute("password", request.getAttribute("password"));
+        System.out.println("STRING EMAIL: "  + request.getAttribute("email"));
+        System.out.println("STRING PASSWORD: "  + request.getAttribute("password"));
     %>
     <br>
     <hr/>
-    <%
-        List<User> users = (List) request.getAttribute("users");
-        User firstUser = users.get(0);
-    %>
-    <b><%= "Welcome " + firstUser.getName() + " " + firstUser.getSurname() %></b>
-    <table>
-      <tr>
-        <th>First Name</th>
-        <th>Last Name</th>
-      </tr>
-        <%for (User user : users){%>
-                <tr>
-                    <td><%=user.getName() %></td>
-                    <td><%=user.getSurname() %></td>
-                </tr>
-        <% } %>
-    </table>
 </head>
 <body>
-<h1>Hello JSP</h1>
+<form method="post" action="/my-app/create-appointment-servlet">
+    <div class="container" style="padding: 50px 0; margin-left: 500px">
+        <input name="appointment-name" placeholder="Appointment Name" style="margin-top: 15px;">
+        <br>
+        <br>
+        <button type="submit" style="margin-top: 15px;">Create Appointment</button>
+    </div>
+</form>
 </body>
 </html>

@@ -45,9 +45,6 @@ public class LoginServlet extends HttpServlet {
         String params = formatParams(req);
 
         _authenticatedAccount = AuthenticateUser(req.getParameter("email"), req.getParameter("password"));
-            if (_authenticatedAccount.doctor != null) { // The user is doctor
-                _authenticatedAccount.CreateSchedule();
-            }
 
             if (_authenticatedAccount.user == null) {
                 resp.getWriter().write("Authentication Failed!\nMethod doPost\nURI " + uri + "\nParams: \n" + params + "\n");

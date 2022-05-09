@@ -116,7 +116,6 @@ public class ServiceDbEntity extends  DbEntity{
 
     @Override
     public void CreateTable(){
-        super.CreateTable();
         try (PrintWriter writer = new PrintWriter("services.csv")) {
 
             StringBuilder sb = new StringBuilder();

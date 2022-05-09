@@ -15,8 +15,6 @@ public class ScheduleDbEntity extends DbEntity{
 
         schedules = new ArrayList<Schedule>();
 
-
-
         String line = "";
 
         try {
@@ -122,7 +120,7 @@ public class ScheduleDbEntity extends DbEntity{
 
             writer.println(_row.toString());
 
-            System.out.println("Table has been successfully created!");
+            System.out.println("Schedule has been created!");
 
             writer.flush();
             return true;

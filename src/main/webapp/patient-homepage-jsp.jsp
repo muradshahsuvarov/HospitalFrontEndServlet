@@ -5,7 +5,6 @@
 <head>
     <title>Home Page</title>
     <%
-
         response.getWriter().write("Welcome " + request.getAttribute("firstname") + " " + request.getAttribute("lastname"));
         request.setAttribute("email", request.getAttribute("email"));
         request.setAttribute("password", request.getAttribute("password"));

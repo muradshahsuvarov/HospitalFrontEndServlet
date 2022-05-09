@@ -25,18 +25,15 @@ public class PatientAccServlet extends HttpServlet {
         String auth_password = req.getParameter("password");
 
         Account _authenticatedAccount = AuthenticateUser(auth_email, auth_password);
-        if (_authenticatedAccount.doctor != null) { // The user is doctor
-            _authenticatedAccount.CreateSchedule();
-        }
 
-        if (_authenticatedAccount.user == null) {
+        if (_authenticatedAccount.user != null) {
 
-        }else{
             req.setAttribute("firstname", _authenticatedAccount.user.getName());
             req.setAttribute("lastname", _authenticatedAccount.user.getSurname());
             req.setAttribute("email", _authenticatedAccount.user.getEmail());
             req.setAttribute("password", _authenticatedAccount.user.getPassword());
             getServletContext().getRequestDispatcher("/patient-homepage-jsp.jsp").forward(req, resp);
+
         }
 
     }

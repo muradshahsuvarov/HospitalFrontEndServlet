@@ -51,11 +51,21 @@ public class Account {
         historyDbEntity.AddRow(history_sb);
 
     }
+
+    public ArrayList<String> SearchService(String _key) throws IOException {
+
+        Search _search = new Search();
+        ArrayList<String> _searchedServices =_search.getMedicalServices(_key);
+
+        AddToHistory("Service " + _key + " is being searched...");
+
+        return _searchedServices;
+    }
+
     public ArrayList<String> SearchDoctors(String _key) throws IOException {
 
             Search _search = new Search();
             ArrayList<String> _searchedDoctors = _search.getDoctors(_key);
-            ArrayList<String> _searchedServices =_search.getMedicalServices(_key);
 
             AddToHistory("Doctor " + _key + " is being searched...");
 
@@ -75,7 +85,7 @@ public class Account {
     public void BookAppointment(String _ownerEmail, String _bookName) throws IOException {
 
 
-        if (this.isAuthenticated && doctor == null && patient != null) {
+        if (doctor == null && patient != null) {
 
             book_db = new BookDbEntity();
             schedule_db = new ScheduleDbEntity();
@@ -153,12 +163,15 @@ public class Account {
 
     public void CreateAppointment(String _ownerEmail, String _bookName) throws IOException {
 
-        if (this.isAuthenticated && doctor != null && patient == null) {
+        schedule_db = new ScheduleDbEntity();
+        if (doctor != null && patient == null) {
 
-            schedule_db = new ScheduleDbEntity();
+            System.out.println("Creating an appointment...");
 
             for (var iterator_schedule : schedule_db.schedules) {
-                if (iterator_schedule.ownerEmail.contains(_ownerEmail)) {
+                System.out.println("Schedule Email: " + iterator_schedule.ownerEmail);
+                System.out.println("Owner Email: " + _ownerEmail);
+                if (iterator_schedule.ownerEmail.equals(_ownerEmail)) {
                     System.out.println("Schedule " + _ownerEmail + " exists!");
                     book_db = new BookDbEntity();
                     long lineCount;
@@ -181,8 +194,15 @@ public class Account {
 
                     System.out.println("Book " + _bookName + " has been successfully added!");
                     AddToHistory("Book " + _bookName + " has been successfully added!");
+                }else{
+                    System.out.println("Schedule " + _ownerEmail + " doesn't exist!");
                 }
             }
+        }else {
+            System.out.println("Creating Appointment");
+            System.out.println("Doctor: " + doctor);
+            System.out.println("Patient: " + patient);
+
         }
     }
 

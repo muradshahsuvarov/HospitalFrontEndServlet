@@ -9,7 +9,13 @@ import java.util.List;
 
 public class MainFunctions {
 
+    public static int called = 0;
+    public static Account _authedAccout;
+
     public static Account AuthenticateUser(String _username, String _password) {
+
+        called++;
+        System.out.println("AuthenticateUser HAS BEEN CALLED: " + called);
 
         Authentication auth = new Authentication();
         Account acc = new Account(_username, _password);
@@ -19,7 +25,6 @@ public class MainFunctions {
             if (acc.doctor != null && acc.patient == null) {
                 System.out.println("ACCOUNT DOCTOR SPEC: " + acc.doctor.specialization);
                 System.out.println("ACCOUNT DOCTOR ID: " + acc.doctor.doctorId);
-
             }else if (acc.doctor == null && acc.patient != null) {
 
                 System.out.println("ACCOUNT PATIENT: " + acc.patient);
@@ -28,6 +33,8 @@ public class MainFunctions {
             }
         }
 
+        _authedAccout = acc;
+        System.out.println("ACCOUNT USER EMAIL: " + acc.user.email);
         return acc;
     }
 
